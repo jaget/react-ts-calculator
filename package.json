@@ -20,7 +20,8 @@
     "eject": "react-scripts eject",
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
-    "dev": "start-test 3000 cy:open"
+    "dev": "start-test 3000 cy:open",
+    "lint": "eslint \"**/*.{ts,tsx,js,jsx}\""
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +48,15 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.4.1",
-    "cypress": "^9.5.2"
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "babel-plugin-istanbul": "^6.1.1",
+    "cypress": "^9.5.2",
+    "eslint": "^8.11.0",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "^2.6.0",
+    "prettier-eslint": "^13.0.0"
   }
 }
