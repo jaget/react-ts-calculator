@@ -21,7 +21,15 @@
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
     "dev": "start-test 3000 cy:open",
-    "lint": "eslint \"**/*.{ts,tsx,js,jsx}\""
+    "lint": "eslint \"**/*.{ts,tsx,js,jsx}\"",
+    "test:integration": "cypress run --config video=false",
+    "coverage:integration": "start-server-and-test 3000 test:integration",
+    "coverage:clean": "rm -rf .nyc_output && rm -rf coverage",
+    "coverage:unit": "react-scripts test --watchAll=false --coverage --coverageDirectory=coverage/unit",
+    "coverage:merge": "istanbul-merge --out coverage/merged/coverage-final.json ./coverage/unit/coverage-final.json  ./coverage/visual-regression/coverage-final.json ./coverage/integration/coverage-final.json",
+    "coverage:merge-report": "nyc report --reporter=lcov --reporter=text --temp-dir=./coverage/merged --report-dir=./coverage/merged",
+    "coverage-orig": "npm run coverage:clean && npm run coverage:init && npm run coverage:integration && npm run coverage:unit && npm run coverage:merge && npm run coverage:merge-report",
+    "coverage": "npm run coverage:clean && npm run coverage:integration && npm run coverage:unit && npm run coverage:merge && npm run coverage:merge-report"
   },
   "eslintConfig": {
     "extends": [
@@ -56,6 +64,7 @@
     "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "istanbul-merge": "^1.1.1",
     "prettier": "^2.6.0",
     "prettier-eslint": "^13.0.0"
   }
