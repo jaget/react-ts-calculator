@@ -29,7 +29,9 @@
     "coverage:merge": "istanbul-merge --out coverage/merged/coverage-final.json ./coverage/unit/coverage-final.json  ./coverage/visual-regression/coverage-final.json ./coverage/integration/coverage-final.json",
     "coverage:merge-report": "nyc report --reporter=lcov --reporter=text --temp-dir=./coverage/merged --report-dir=./coverage/merged",
     "coverage-orig": "npm run coverage:clean && npm run coverage:init && npm run coverage:integration && npm run coverage:unit && npm run coverage:merge && npm run coverage:merge-report",
-    "coverage": "npm run coverage:clean && npm run coverage:integration && npm run coverage:unit && npm run coverage:merge && npm run coverage:merge-report"
+    "coverage": "npm run coverage:clean && npm run coverage:integration && npm run coverage:unit && npm run coverage:merge && npm run coverage:merge-report",
+    "stryker": "npx stryker run",
+    "stryker-trace": "stryker run --logLevel trace"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +54,8 @@
   "devDependencies": {
     "@cypress/code-coverage": "^3.9.12",
     "@cypress/instrument-cra": "^1.4.0",
+    "@stryker-mutator/core": "^5.6.1",
+    "@stryker-mutator/jest-runner": "^5.6.1",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
