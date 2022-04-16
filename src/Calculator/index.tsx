@@ -41,14 +41,14 @@ const Calculator = () => {
         inputFieldsDispatch({ type: 'MUTATE', index, value: +event.target.value })
     };
 
-    const renderFields = () => inputFields.map((inputField: number, i: number) => (<input key={`${i}`} className="input" onChange={(e) => onChangeHandler(e, i)} value={inputFields[i]} />));
+    const renderFields = () => inputFields.map((inputField: number, i: number) => (<input key={i} className="input" onChange={(e) => onChangeHandler(e, i)} value={inputField} />));
 
     return <>
         {renderFields()}
         <button onClick={increment} >Increment</button>
         <button onClick={decrement} >Decrement</button>
         <button onClick={calculate} >Calculate</button>
-        <p>{total}</p>
+        <p data-testid="total">{total}</p>
     </>;
 }
 

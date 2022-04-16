@@ -17,8 +17,10 @@ describe('Calculator', () => {
     it('Decrements', () => {
         cy.visit('localhost:3000');
         cy.get('.input').should('have.length', 2);
+        cy.contains('Increment').click();
+        cy.get('.input').should('have.length', 3);
         cy.contains('Decrement').click();
-        cy.get('.input').should('have.length', 1);
+        cy.get('.input').should('have.length', 2);
     })
 
 
@@ -32,6 +34,7 @@ describe('Calculator', () => {
         cy.contains(/calculate/i).should('exist').click();
 
         cy.contains('4').should('exist');
+        cy.contains('-4').should('not.exist');
 
     });
 })
